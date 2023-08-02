@@ -14,6 +14,7 @@ export class ListeEntreeComponent {
   articles: any[];
 
   entreeForm : FormGroup;
+  selectedFile: File | undefined;
 
   search :string = "";
 
@@ -21,7 +22,8 @@ export class ListeEntreeComponent {
     this.entreeForm = this.formBuilder.group({
       titre : [''],
       descr :[''],
-      contenu :['']
+      contenu :[''],
+      cover : [''],
     })
   }
 
@@ -37,9 +39,16 @@ export class ListeEntreeComponent {
 
 
   insertEntree(){
-    this.entree.addEntree(this.entreeForm.value).subscribe(res=>{
+    const formData = new FormData();
+    formData.append('titre', this.entreeForm.get('titre')!.value);
+    formData.append('descr', this.entreeForm.get('descr')!.value);
+    formData.append('contenu', this.entreeForm.get('contenu')!.value);
+    formData.append('cover', this.selectedFile!);
+
+    this.entree.addEntree(formData).subscribe(res=>{
       this.getAllArticles();
       this.entreeForm.reset();
+      this.selectedFile = undefined;
     })
   }
 
@@ -49,4 +58,9 @@ export class ListeEntreeComponent {
   }
 
   onSearch(event: KeyboardEvent){}
+
+  onFileChange(event: any) {
+    this.selectedFile = event.target.files[0];
+  //   this.entreeForm.patchValue({ cover: this.selectedFile });
+  }
 }

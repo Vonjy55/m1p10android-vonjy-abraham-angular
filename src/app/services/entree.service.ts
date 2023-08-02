@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError,Observable,catchError } from 'rxjs';
 import { environment } from '../environments/environment';
@@ -18,9 +18,11 @@ export class EntreeService {
     return this.http.get(this.base_url+'/article').pipe(catchError(this.handleError));
   }
 
-  addEntree(entree : Entree):Observable<any>{
+  addEntree(entree:FormData):Observable<any>{
+    console.log(entree);
     return this.http.post(this.base_url + '/article',entree).pipe(catchError(this.handleError));
   }
+
 
   findLastEntree(idVoiture: string):Observable<any>{
     return this.http.get(environment.baseApiURL+'/entrees',{

@@ -45,6 +45,7 @@
         class="form-insert-entree"
         [formGroup]="entreeForm"
         (ngSubmit)="insertEntree()"
+        enctype="multipart/form-data"
       >
         <label for="desc">Titre</label>
         <input
@@ -72,6 +73,9 @@
           placeholder="Contenu de l'article"
           required
         />
+
+        <label for="file">Image:</label>
+        <input type="file" id="file" formControlName="cover" (change)="onFileChange($event)" />
 
       
 
