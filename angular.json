@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../m1p10mean-vonjy-abraham/app/public",
+            "outputPath": "../server/app/public",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
