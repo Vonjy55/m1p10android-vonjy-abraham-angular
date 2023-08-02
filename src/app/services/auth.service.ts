@@ -39,7 +39,7 @@ export class AuthService {
         localStorage.setItem('STATE', 'true');
         localStorage.setItem('ROLE', res.role);
         this.loginSubject.next(res.role);
-        this.router.navigate(['voitures']);
+        this.router.navigate(['entrees']);
       });
   }
 

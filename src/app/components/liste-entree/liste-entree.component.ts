@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { throwError,Observable,catchError } from 'rxjs';
 import { EntreeService } from 'src/app/services/entree.service';
-import { VoitureService } from 'src/app/services/voiture.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,49 +11,41 @@ import { Router } from '@angular/router';
 })
 export class ListeEntreeComponent {
 
-  entrees: any[];
-  voitures:any[];
+  articles: any[];
 
   entreeForm : FormGroup;
 
   search :string = "";
 
-  constructor(private entree: EntreeService,private voitureServ: VoitureService,public formBuilder: FormBuilder,public router: Router) {
+  constructor(private entree: EntreeService,public formBuilder: FormBuilder,public router: Router) {
     this.entreeForm = this.formBuilder.group({
-      designation : [''],
-      dateEntree :[''],
-      dateSortie :[''],
-      voitureId :['']
+      titre : [''],
+      descr :[''],
+      contenu :['']
     })
   }
 
   ngOnInit(){
-    this.getAllEntrees();
-    this.fetchVoitures();
+    this.getAllArticles();
   }
 
-  getAllEntrees(){
-    this.entree.findEntrees().subscribe(result => {
-      this.entrees = result.data;
+  getAllArticles(){
+    this.entree.findArticles().subscribe(result => {
+      this.articles = result;
     })
   }
 
-  fetchVoitures() {
-    this.voitureServ.findVoitures().subscribe(result => {
-      this.voitures = result;
-    })
-  }
 
   insertEntree(){
     this.entree.addEntree(this.entreeForm.value).subscribe(res=>{
-      this.getAllEntrees();
+      this.getAllArticles();
       this.entreeForm.reset();
     })
   }
 
   send(event:string){
     if(event == "refresh")
-      this.getAllEntrees()
+      this.getAllArticles()
   }
 
   onSearch(event: KeyboardEvent){}

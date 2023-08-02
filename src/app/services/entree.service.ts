@@ -12,14 +12,14 @@ export class EntreeService {
 
   constructor(private http:HttpClient,private authService:AuthService) { }
 
-  base_url: string = environment.baseApiURL+'/atelier';
+  base_url: string = environment.baseApiURL;
 
-  findEntrees(): Observable<any>{
-    return this.http.get(this.base_url+'/entrees').pipe(catchError(this.handleError));
+  findArticles(): Observable<any>{
+    return this.http.get(this.base_url+'/article').pipe(catchError(this.handleError));
   }
 
   addEntree(entree : Entree):Observable<any>{
-    return this.http.post(this.base_url + '/entree',entree).pipe(catchError(this.handleError));
+    return this.http.post(this.base_url + '/article',entree).pipe(catchError(this.handleError));
   }
 
   findLastEntree(idVoiture: string):Observable<any>{

@@ -1,3 +1,1 @@
-# M1p10meanVonjyAbrahamAngular
-
-## FrontEnd
+# m1p10android-vonjy-abraham-angular

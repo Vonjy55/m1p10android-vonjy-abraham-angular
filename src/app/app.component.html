@@ -2,10 +2,10 @@
   <div class="container-test">
     <nav class="navigation" style="margin-bottom: 1rem;">
       <ul>
-        <li><strong>Mikara-Car</strong></li>
+        <li><strong>Madagascar tourisme</strong></li>
       </ul>
       <ul>
-        <li class=""><strong *ngIf="this.authService.isLoggedIn()" class="p-2 profil">{{role}}</strong></li>
+        <li class=""><strong *ngIf="this.authService.isLoggedIn()" class="p-2 profil">Admin</strong></li>
         
         <li><button (click)="logout()" *ngIf="this.authService.isLoggedIn()" type="button" class="btn deconnexion">Deconnexion</button></li>
       </ul>
@@ -19,7 +19,7 @@
     
     <nav *ngIf="isAtelier()" class="sub-nav">
       <ul>
-        <li><button class="outline" routerLinkActive="active" routerLink="/entrees">Liste des entrées</button></li>
+        <li><button class="outline" routerLinkActive="active" routerLink="#">Gestion des articles</button></li>
       </ul>
     </nav>
     
@@ -40,7 +40,7 @@
           <li>Créer par </li>
           <li>Ranjelison vonjitahina charles &nbsp;&nbsp;|</li>
           <li>Ramilison Abraham</li>
-          <li>©Janvier 2023</li>
+          <li>©Juillet 2023</li>
         </ul>
         <ul></ul>
       </nav>
