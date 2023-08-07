@@ -24,9 +24,11 @@
     "@ng-icons/core": "^23.1.0",
     "@ng-icons/heroicons": "^23.1.0",
     "@picocss/pico": "^1.5.6",
+    "@tinymce/tinymce-angular": "^7.0.0",
     "chart.js": "^4.2.0",
     "rxjs": "~7.5.0",
     "save": "^2.9.0",
+    "tinymce": "^6.6.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

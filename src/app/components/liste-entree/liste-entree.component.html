@@ -1,6 +1,6 @@
 <div class="grid">
   <div class="titre"><h4>Liste des articles</h4></div>
-  <div class="modal"><h4>Ajouter une article</h4></div>
+  <div class="modal"><h4>Ajouter un article</h4></div>
 </div>
 
 <!-- <div class="grid">
@@ -18,25 +18,27 @@
     <table role="grid">
       <thead>
         <tr>
+          <th scope="col"><span class="text">ID</span></th>
           <th scope="col"><span class="text">Titre</span></th>
           <th scope="col"><span class="text">Description</span></th>
-          <th scope="col"><span class="text">Contenu</span></th>
-          <th scope="col"><span class="text">Date_pub</span></th>
+          <th scope="col"><span class="text">Video</span></th>
           <th scope="col"><span class="text">Date_modif</span></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let data of articles">
+          <td>{{ data.id }}</td>
           <td>{{ data.titre }}</td>
           <td>{{ data.descr }}</td>
-          <td>{{ data.contenu }}</td>
-          <td>{{ data.date_pub | date : "dd/MM/yyyy" }}</td>
+          <td>{{ data.video }}</td>
           <td>{{ data.date_modif | date : "dd/MM/yyyy" }}</td>
-          
-         
+
+
         </tr>
       </tbody>
     </table>
+
+
   </div>
 
   <div class="insertion">
@@ -62,26 +64,67 @@
           id="desc"
           formControlName="descr"
           placeholder="Description de l'article"
-          required
         />
 
-        <label for="desc">Contenu</label>
+        <label for="video">Video</label>
         <input
           type="text"
-          id="desc"
+          id="video"
+          formControlName="video"
+          placeholder="Video de presentation(ID youtube)"
+        />
+
+
+        <label for="contenu">Contenu</label>
+        <textarea
+          type="text"
+          id="contenu"
           formControlName="contenu"
           placeholder="Contenu de l'article"
-          required
-        />
+          ></textarea>
+
+        <label for="longitude">Longitude</label>
+        <input type="text" formControlName="longitude" placeholder="valeur en degre"/>
+
+        <label for="latitude">Latitude</label>
+        <input type="text" formControlName="latitude" placeholder="valeur en degre"/>
 
         <label for="file">Image:</label>
         <input type="file" id="file" formControlName="cover" (change)="onFileChange($event)" />
 
-      
+
 
         <!-- Button -->
         <button type="submit" class="ajouter">Ajouter</button>
       </form>
+
+
+    <article>
+      <form
+        class="form-insert-entree"
+        [formGroup]="slideForm"
+        (ngSubmit)="insertSlides()"
+        enctype="multipart/form-data"
+      >
+        <label for="id">id</label>
+        <input
+          type="text"
+          id="id"
+          formControlName="id"
+          placeholder="ID de l'article"
+          required
+        />
+
+
+        <label for="file">Images:</label>
+        <input type="file" multiple accept="image/*" id="file" formControlName="slides" (change)="onFilesChange($event)" />
+
+
+
+        <!-- Button -->
+        <button type="submit" class="ajouter">Ajouter</button>
+      </form>
+    </article>
     </article>
   </div>
 </div>

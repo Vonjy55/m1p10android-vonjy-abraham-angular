@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { throwError,Observable,catchError } from 'rxjs';
 import { environment } from '../environments/environment';
-import { Entree } from '../models/entree';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -23,6 +22,11 @@ export class EntreeService {
     return this.http.post(this.base_url + '/article',entree).pipe(catchError(this.handleError));
   }
 
+  addSlides(entree:FormData, id:string):Observable<any>{
+    console.log(entree);
+    return this.http.post(this.base_url + '/article/slides',entree).pipe(catchError(this.handleError));
+  }
+
 
   findLastEntree(idVoiture: string):Observable<any>{
     return this.http.get(environment.baseApiURL+'/entrees',{
@@ -36,7 +40,7 @@ export class EntreeService {
   // Error
   handleError(error: HttpErrorResponse) {
     console.error(error);
-    
+
     let msg = '';
     if (error.error instanceof ErrorEvent) {
       // client-side error

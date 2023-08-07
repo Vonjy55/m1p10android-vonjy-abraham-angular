@@ -17,11 +17,11 @@ export class LoginComponent {
     private route: ActivatedRoute
   ) {
     if(authService.isLoggedIn())
-      router.navigate(['voitures'])
+      router.navigate(['entrees'])
 
-    
-    let email;
-    let pswrd;
+
+    let email:String[] = ['admin@mail.com'];
+    let pswrd:String[] = ['123456'];
 
     this.route.queryParams.subscribe(params => {
         email = [params['email']] || [''];
@@ -38,6 +38,6 @@ export class LoginComponent {
   loginUser() {
     this.authService.login(this.loginForm.value);
     console.log('logged in');
-    
+
   }
 }
